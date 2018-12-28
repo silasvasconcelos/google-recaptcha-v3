@@ -48,10 +48,34 @@ class Google_Recaptcha_V3_Admin {
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
-
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->add_menu();
 
+	}
+
+	function add_menu()
+	{
+		add_action('admin_menu', [$this, 'create_menu']);
+	}
+
+	function create_menu() {
+		//create new top-level menu
+		add_menu_page('Google reCaptcha V3', 'G reCaptcha', 'administrator', __FILE__, [$this, 'plugin_settings_page'] , plugins_url('/images/icon.png', __FILE__) );
+
+		//call register settings function
+		add_action( 'admin_init', [$this, 'register_plugin_settings'] );
+	}
+
+	function register_plugin_settings() {
+		//register our settings
+		register_setting( 'google-recaptcha-v3-plugin-settings-group', 'site_key' );
+		register_setting( 'google-recaptcha-v3-plugin-settings-group', 'secret_key' );
+		register_setting( 'google-recaptcha-v3-plugin-settings-group', 'option_etc' );
+	}
+
+	function plugin_settings_page() {
+		include implode(DIRECTORY_SEPARATOR, [dirname(__FILE__), 'partials', 'google-recaptcha-v3-admin-display.php']);
 	}
 
 	/**

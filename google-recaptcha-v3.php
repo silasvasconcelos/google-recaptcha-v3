@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Google reCaptcha V3
  * Plugin URI:        https://github.com/silasvasconcelos/google-recaptcha-v3
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Plugin para user o Google reCaptcha V3 no seu site. 
  * Version:           1.0.0
  * Author:            Silas Vasconcelos
  * Author URI:        https://github.com/silasvasconcelos
@@ -45,6 +45,16 @@ function activate_google_recaptcha_v3() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-google-recaptcha-v3-activator.php';
 	Google_Recaptcha_V3_Activator::activate();
 }
+
+/**
+ * The code that runs during plugin init.
+ * This action is documented in includes/class-google-recaptcha-v3-shortcode.php
+ */
+function shortcode_google_recaptcha_v3() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-google-recaptcha-v3-shortcode.php';
+	Google_Recaptcha_V3_Shortcode::register();
+}
+shortcode_google_recaptcha_v3();
 
 /**
  * The code that runs during plugin deactivation.
@@ -80,3 +90,12 @@ function run_google_recaptcha_v3() {
 
 }
 run_google_recaptcha_v3();
+
+function google_re_captcha_v3_front()
+{
+
+	die( __FILE__ . '#' . __LINE__ );
+
+};
+
+add_shortcode(‘google_re_captcha_v3’, 'google_re_captcha_v3_front');
