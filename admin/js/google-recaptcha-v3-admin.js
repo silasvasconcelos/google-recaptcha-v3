@@ -1,32 +1,24 @@
 (function( $ ) {
 	'use strict';
 
-	/**
-	 * All of the code for your admin-facing JavaScript source
-	 * should reside in this file.
-	 *
-	 * Note: It has been assumed you will write jQuery code here, so the
-	 * $ function reference has been prepared for usage within the scope
-	 * of this function.
-	 *
-	 * This enables you to define handlers, for when the DOM is ready:
-	 *
-	 * $(function() {
-	 *
-	 * });
-	 *
-	 * When the window is loaded:
-	 *
-	 * $( window ).load(function() {
-	 *
-	 * });
-	 *
-	 * ...and/or other possibilities.
-	 *
-	 * Ideally, it is not considered best practise to attach more than a
-	 * single DOM-ready or window-load handler for a particular page.
-	 * Although scripts in the WordPress core, Plugins and Themes may be
-	 * practising this, we should strive to set a better example in our own work.
-	 */
+	var google_recaptcha_v3_integrate_generator = $('button#google-recaptcha-v3-integrate-generator');
+	if (google_recaptcha_v3_integrate_generator.length > 0) {
+	
+		var google_recaptacha_v3_replaces = { '[': '&#91;', ']': '&#93;', '"':'\\"'};
+		var google_recaptcha_v3_generato_shortcode = $('textarea#google-recaptcha-v3-generato-shortcode');
+		google_recaptcha_v3_integrate_generator.on('click', function () {
+				var str = google_recaptcha_v3_generato_shortcode.val();
+				if ((str || '').length > 0) {
+					var res = str.replace(/\[|\]|\"/gi, function (x) {
+					  return x = google_recaptacha_v3_replaces[x];
+					});
+					google_recaptcha_v3_generato_shortcode.val(res);
+					alert('Copie e cole o código na pagina de integração.');
+				} else {
+					alert('Insira seu seletor jQuery na caixa de texto.');
+					google_recaptcha_v3_generato_shortcode.focus();
+				}
+		});
+	}
 
 })( jQuery );

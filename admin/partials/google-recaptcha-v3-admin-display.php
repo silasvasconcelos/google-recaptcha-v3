@@ -49,9 +49,32 @@
         <tr valign="top">
 	        <th scope="row">Tag</th>
 	        <td>
-	        	
+	        	<strong>[google_re_captcha_v3 form_name="nome-do-form" form_id="id-do-form" form_selector="seletor-jquery"]</strong>
+	        </td>
+        </tr>
+        <tr valign="top">
+        	<td></td>
+	        <td>
+	        	<p style="color:#e06260;">
+	        		<strong>OBS</strong>: Deve-se ser infromado um desses três seletores.
+	        	</p>
+	        	<ul>
+	        		<li><strong>form_id</strong>: : ID do formulário, o mesmo sera usado no JavaScript.</li>
+	        		<li><strong>form_name</strong>: Nome do formulário, o mesmo sera usado no JavaScript caso não especificado um ID.</li>
+	        		<li><strong>form_selector</strong>: Nome do formulário, o mesmo sera usado no JavaScript caso não especificado um ID ou um Nome.</li>
+	        	</ul>
+	        </td>
+        </tr>
+        <tr valign="top">
+	        <th scope="row">Gerar código apertir de um selector jQuery</th>
+	        <td>
+	        	<textarea id="google-recaptcha-v3-generato-shortcode" cols="60" rows="10"></textarea>
+	        	<p>
+	        		<button class="button" id="google-recaptcha-v3-integrate-generator">Gerar</button>
+	        	</p>
 	        </td>
         </tr>
     </table>
+
 
 </div>

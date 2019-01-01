@@ -51,6 +51,7 @@ class Google_Recaptcha_V3_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 		$this->add_menu();
+		$this->enqueue_scripts();
 
 	}
 
@@ -120,7 +121,7 @@ class Google_Recaptcha_V3_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/google-recaptcha-v3-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/google-recaptcha-v3-admin.js', array( 'jquery' ), $this->version, true );
 
 	}
 

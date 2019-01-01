@@ -37,6 +37,17 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'PLUGIN_NAME_VERSION', '1.0.0' );
 
+function dd(...$data)
+{
+	echo '<pre>';
+	foreach ($data as $debug) {
+		var_dump( $debug );
+	}
+	echo '<pre>';
+	die;
+}
+
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-google-recaptcha-v3-activator.php
@@ -52,7 +63,8 @@ function activate_google_recaptcha_v3() {
  */
 function shortcode_google_recaptcha_v3() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-google-recaptcha-v3-shortcode.php';
-	Google_Recaptcha_V3_Shortcode::register();
+	$plugin = new Google_Recaptcha_V3_Shortcode();
+	$plugin->run();
 }
 shortcode_google_recaptcha_v3();
 
@@ -90,12 +102,3 @@ function run_google_recaptcha_v3() {
 
 }
 run_google_recaptcha_v3();
-
-function google_re_captcha_v3_front()
-{
-
-	die( __FILE__ . '#' . __LINE__ );
-
-};
-
-add_shortcode(‘google_re_captcha_v3’, 'google_re_captcha_v3_front');
